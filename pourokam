@@ -1,0 +1,80 @@
+class Product:
+    def __init__(self, owner):
+        self.owner = owner
+
+
+class Lesson:
+    def __init__(self, name, video_link, duration):
+        self.name = name
+        self.video_link = video_link
+        self.duration = duration
+
+
+class UserAccess:
+    def __init__(self, user, product):
+        self.user = user
+        self.product = product
+
+
+class UserLessonStatus:
+    def __init__(self, user, lesson):
+        self.user = user
+        self.lesson = lesson
+        self.viewed_time = 0
+        self.status = "не просмотрено"
+
+    def update_viewed_time(self, time):
+        self.viewed_time = time
+        if self.viewed_time >= 0.8 * self.lesson.duration:
+            self.status = "просмотрено"
+
+
+products = [
+    {
+        "id": 1,
+        "name": "Product 1"
+    },
+    {
+        "id": 2,
+        "name": "Product 2"
+    }
+]
+
+lessons = [
+    {
+        "id": 1,
+        "product_id": 1,
+        "name": "Lesson 1",
+        "status": "completed",
+        "view_time": 120,
+        "last_viewed": "2022-01-01"
+    },
+    {
+        "id": 2,
+        "product_id": 1,
+        "name": "Lesson 2",
+        "status": "in_progress",
+        "view_time": 60,
+        "last_viewed": "2022-01-02"
+    },
+    {
+        "id": 3,
+        "product_id": 2,
+        "name": "Lesson 3",
+        "status": "not_started",
+        "view_time": 0,
+        "last_viewed": None
+    }
+]
+
+users = [
+    {
+        "id": 1,
+        "name": "User 1",
+        "product_access": [1]
+    },
+    {
+        "id": 2,
+        "name": "User 2",
+        "product_access": [1, 2]
+    }
